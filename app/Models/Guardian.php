@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Guardian extends Model
 {
     use HasFactory;
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'address'];
 
-    public function Student()
+    protected $fillable = ['first_name', 'last_name', 'email', 'address', 'contact'];
+
+    public function students()
     {
-        return $this->hasMany(Student::class, 'parent_id');
+        return $this->hasMany(Student::class, 'guardian_id');
     }
 }

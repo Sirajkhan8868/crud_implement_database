@@ -6,18 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
+            $table->foreignId('department_id')->nullable()->constrained('departments')->onDelete('cascade');
             $table->string('first_name');
-            $table->string('last-name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->text('address');
             $table->string('contact');
@@ -26,11 +21,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('teachers');

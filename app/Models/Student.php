@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['first_name', 'last_name', 'date_of_birth', 'gender', 'address', 'contact', 'parent_id', 'student_class_id'];
+    protected $fillable = ['first_name', 'last_name', 'date_of_birth', 'gender', 'address', 'contact', 'guardian_id', 'student_class_id','enrollment_date'];
     public function guardian()
     {
-       return $this->belongsTo(Guardian::class, 'parent_id');
+       return $this->belongsTo(Guardian::class);
     }
     public function studentClass()
     {
-       return $this->hasMany(StudentClass::class,);
+       return $this->belongsTo(StudentClass::class);
     }
     public function enrollments()
     {
